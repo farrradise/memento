@@ -1,23 +1,28 @@
 var carteCache = ["lundi", "lundi1", "mardi", "mardi1", "mercredi", "mercredi1", "jeudi", "jeudi1", "vendredi", "vendredi1", "samedi", "samedi1", "dimanche", "dimanche1"];
 
 function shuffle(carteCache) {
-    var j, x, i;
+    var j, x, i, k;
     for (i = carteCache.length; i; i--) {
         j = Math.floor(Math.random() * i);
         x = carteCache[i - 1];
         carteCache[i - 1] = carteCache[j];
         carteCache[j] = x;
+    }
+
+    for (k = 0 ; k < carteCache.length; k++) {
+        var value = carteCache[k];
+        document.getElementsByClassName('carte')[k].setAttribute("id", value);
+        console.log(document.getElementsByClassName('carte')[k]);
+
+    }
 }
 
-  return (carteCache);
-}
+
 
 
 for (i=0; i<carteCache.length; i++) {
-  carteCache[i].addEventListener("click", function () {showImage(this);});
+  document.getElementsByClassName('carte')[i].addEventListener("click", function () {showImage(this);});
 }
-
-
 
 function showImage(obj) {
 
