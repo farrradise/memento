@@ -12,12 +12,8 @@ function shuffle(carteCache) {
     for (k = 0 ; k < carteCache.length; k++) {
         var value = carteCache[k];
         document.getElementsByClassName('carte')[k].setAttribute("id", value);
-        console.log(document.getElementsByClassName('carte')[k]);
-
     }
 }
-
-
 
 
 for (i=0; i<carteCache.length; i++) {
@@ -87,4 +83,13 @@ function showImage(obj) {
   }
 }
 
-test( function() { alert('Hello'); } );
+créer une fonction avec une valeur vide de base par exemple check = "";
+la lancer à chaque click
+prendre la valeur des 3 premieres lettre de lid
+SI check ="";
+alors la remplacer par les 3 premieres lettres de lid
+sinon
+comparer la nouvelle valeur et lancienne
+si les deux sont idem alors
+point ++
+sinon remettre src default
