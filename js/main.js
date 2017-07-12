@@ -1,4 +1,6 @@
+var temporaire;
 var carteCache = ["lundi", "lundi1", "mardi", "mardi1", "mercredi", "mercredi1", "jeudi", "jeudi1", "vendredi", "vendredi1", "samedi", "samedi1", "dimanche", "dimanche1"];
+var check ="";
 
 function shuffle(carteCache) {
     var j, x, i, k;
@@ -21,7 +23,6 @@ for (i=0; i<carteCache.length; i++) {
 }
 
 function showImage(obj) {
-
 
   switch (obj.id) {
     case "lundi":
@@ -81,15 +82,25 @@ function showImage(obj) {
     break;
 
   }
-}
 
-créer une fonction avec une valeur vide de base par exemple check = "";
-la lancer à chaque click
-prendre la valeur des 3 premieres lettre de lid
-SI check ="";
-alors la remplacer par les 3 premieres lettres de lid
-sinon
-comparer la nouvelle valeur et lancienne
-si les deux sont idem alors
-point ++
-sinon remettre src default
+  //console.log(temporaire);
+  var temp = obj.id.substring(0,3);
+
+  if ( check == "") {
+    check = temp;
+    temporaire = obj.id;
+  } else {
+    if (check == temp) {
+      if (temporaire == obj.id) {
+        // alert("");
+      } else {
+        alert("bravo");
+      }
+      //ajouter un point
+      check ="";
+    } else {
+    setTimeout(function(){ obj.setAttribute("src", "./img/default.jpg"); }, 1500);
+    setTimeout(function(){ document.getElementById(temporaire).setAttribute("src", "./img/default.jpg"); }, 1500);
+    }
+  }
+}
