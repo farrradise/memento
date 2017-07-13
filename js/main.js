@@ -11,7 +11,7 @@ function rejouer() {
       document.getElementsByClassName('carte')[k].setAttribute("src","./img/default.jpg");
       attempt= 0;
   }
-
+  check ="";
   shuffle(carteCache);
 }
 
