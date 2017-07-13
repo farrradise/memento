@@ -3,6 +3,17 @@ var carteCache = ["lundi", "lundi1", "mardi", "mardi1", "mercredi", "mercredi1",
 var check = "";
 var attempt= 0;
 var pts = 0;
+var clickstop = 0;
+var record;
+
+function rejouer() {
+  for (k = 0; k < carteCache.length; k++) {
+      document.getElementsByClassName('carte')[k].setAttribute("src","./img/default.jpg");
+      attempt= 0;
+  }
+
+  shuffle(carteCache);
+}
 
 function shuffle(carteCache) {
     var j, x, i, k;
@@ -27,7 +38,7 @@ for (i = 0; i < carteCache.length; i++) {
 }
 
 function showImage(obj) {
-
+  if (clickstop ==0 ) {
     switch (obj.id) {
         case "lundi":
             document.getElementById("lundi").setAttribute("src", "./img/lundi.jpg");
@@ -87,7 +98,6 @@ function showImage(obj) {
 
     }
 
-    //console.log(temporaire);
     var temp = obj.id.substring(0, 3);
 
     if (check == "") {
@@ -96,28 +106,36 @@ function showImage(obj) {
     } else {
         if (check == temp) {
             if (temporaire == obj.id) {
+              clickstop=0;
             } else {
                 attempt++;
                 pts++;
                 check ="";
             }
         } else {
+          clickstop++;
           check ="";
             setTimeout(function() {
                 obj.setAttribute("src", "./img/default.jpg");
                 document.getElementById(temporaire).setAttribute("src", "./img/default.jpg");
                 attempt++;
-                //ajouter un point
-            }, 450);
+                clickstop=0;
+            }, 1500);
         }
     }
 
 
     if (pts == 7) {
       // var document.getElementById("tentative").text;
-      document.getElementById("tentative").innerHTML = attempt;
-
+      if (attempt < record) {
+        document.getElementById("tentative").innerHTML = attempt;
+        record = attempt;
+      } else if (document.getElementById('tentative').textContent == "à venir") {
+        document.getElementById("tentative").innerHTML = attempt;
+        record = attempt;
+      }
+      pts = 0;
     }
 
-
+  }
 }
