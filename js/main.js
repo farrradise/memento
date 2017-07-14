@@ -12,6 +12,7 @@ function rejouer() {
       attempt= 0;
   }
   check ="";
+  document.getElementById("leScore").innerHTML =attempt;
   shuffle(carteCache);
 }
 
@@ -111,6 +112,7 @@ function showImage(obj) {
                 attempt++;
                 pts++;
                 check ="";
+                document.getElementById("leScore").innerHTML = attempt;
             }
         } else {
           clickstop++;
@@ -120,7 +122,9 @@ function showImage(obj) {
                 document.getElementById(temporaire).setAttribute("src", "./img/default.jpg");
                 attempt++;
                 clickstop=0;
+                document.getElementById("leScore").innerHTML = attempt;
             }, 1500);
+
         }
     }
 
